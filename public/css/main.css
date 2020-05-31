@@ -1,0 +1,273 @@
+:root {
+  --main: #8080c0;
+  --bodyMaxWidth: 1000px;
+  --textSecondary: #4c4c4c;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  background: var(--main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+header .body {
+  width: 90%;
+  max-width: var(--bodyMaxWidth);
+}
+
+.bodyWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 20px 0;
+}
+.bodyWrapper .body {
+  width: 90%;
+  max-width: var(--bodyMaxWidth);
+}
+
+.body .banner {
+  border: 1px solid #eee;
+  width: 105%;
+  margin-left: calc(-2.5% - 1px);
+  border-radius: 6px;
+  background: #fbfbfb;
+  height: 300px;
+  overflow: hidden;
+}
+.body .banner .bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showLayout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-gap: 20px;
+}
+
+.showCore.unloaded {
+  display: none;
+}
+
+.showInfo {
+  margin-top: -100px;
+}
+.showInfo * {
+  box-sizing: border-box;
+}
+.showInfo .showPoster {
+  width: 100%;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background: #fbfbfb;
+  min-height: 283px;
+}
+
+.coreInfo {
+  margin-top: 20px;
+}
+.coreInfo .showTitle {
+  margin: 10px 0;
+}
+.coreInfo .showDescription {
+  color: var(--textSecondary);
+  margin: 0;
+}
+
+.episodeList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px 10px;
+}
+.episodeList .episodeTitle {
+  margin: 0;
+  margin-top: 10px;
+}
+.episodeList .episodeDescription {
+  margin: 0;
+  margin-top: 5px;
+  color: var(--textSecondary);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow-y: hidden;
+}
+.episodeList .episodeImage {
+  position: relative;
+}
+.episodeList .episodeImage .thumbnailImg {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  display: block;
+}
+.episodeList .episodeImage .playButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  background: var(--main);
+  color: white;
+  opacity: 0;
+  transition: opacity 100ms;
+}
+.episodeList .episodeImage .playButton svg {
+  display: block;
+  padding-left: 2px;
+}
+.episodeList .episodeImage:hover .playButton {
+  cursor: pointer;
+  opacity: 1;
+}
+
+@media screen and (max-width: 700px) {
+  .showLayout {
+    grid-template-columns: 100%;
+    grid-gap: 0;
+  }
+
+  .episodeItem {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-gap: 15px;
+    align-items: center;
+  }
+  .episodeItem .episodeTitle {
+    margin-top: 0;
+  }
+}
+.showVideo {
+  overflow-y: hidden;
+}
+.showVideo .videoOverlay {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #191919;
+  z-index: 999;
+}
+.showVideo .videoOverlay video {
+  width: 100vw;
+  height: 100vh;
+}
+
+.videoControls {
+  transition: opacity 300ms;
+  opacity: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: var(--bodyMaxWidth);
+  display: flex;
+  height: 100%;
+}
+.videoControls:not(.visible) {
+  opacity: 0;
+}
+.videoControls .top {
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+.videoControls .top .closeButton {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.videoControls .top .closeButton svg {
+  display: block;
+}
+.videoControls .playerButtons button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+.videoControls .playerButtons button svg {
+  display: block;
+}
+.videoControls .bottom {
+  padding: 12px 15px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 15px;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  position: absolute;
+  bottom: 50px;
+  box-sizing: border-box;
+}
+.videoControls .bottom .progress {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-gap: 10px;
+  align-items: center;
+  font-variant-numeric: tabular-nums;
+}
+.videoControls .bottom .progressBar {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  cursor: pointer;
+}
+.videoControls .bottom .progressBar .bar {
+  width: 100%;
+  height: 2px;
+  background: #4c4c4c;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+.videoControls .bottom .progressBar .bar .dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--main);
+}
+
+.videoOverlay:not([data-paused=true]) .playButton {
+  display: none;
+}
+
+.videoOverlay[data-paused=true] .pauseButton {
+  display: none;
+}
+
+/*# sourceMappingURL=main.css.map */

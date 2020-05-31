@@ -1,0 +1,12 @@
+.bodyWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 20px 0;
+	
+	.body {
+		width: 90%;
+		max-width: var(--bodyMaxWidth);
+	}
+
+}

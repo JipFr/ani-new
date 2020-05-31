@@ -1,0 +1,139 @@
+
+$gray: #fbfbfb;
+$gray-dark: #eee;
+
+.body .banner {
+	border: 1px solid $gray-dark;
+	width: 105%;
+	margin-left: calc(-2.5% - 1px);
+	border-radius: 6px;
+	background: $gray;
+	height: 300px;
+	overflow: hidden;
+	
+	.bannerImage {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+}
+
+.showLayout {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 200px 1fr;
+	grid-gap: 20px;
+}
+
+.showCore.unloaded {
+	display: none;
+}
+
+.showInfo {
+	margin-top: -100px;
+
+	* {
+		box-sizing: border-box;
+	}
+	.showPoster {
+		width: 100%;
+		border: 1px solid $gray-dark;
+		border-radius: 4px;
+		background: $gray;
+		min-height: 283px;
+	}
+	
+}
+
+.coreInfo {
+
+	margin-top: 20px;
+
+	.showTitle {
+		margin: 10px 0;
+	}
+	.showDescription {
+		color: var(--textSecondary);
+		margin: 0;
+	}
+}
+
+.episodeList {
+
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-gap: 20px 10px;
+
+	.episodeTitle {
+		margin: 0;
+		margin-top: 10px;
+	}
+	.episodeDescription {
+		margin: 0;
+		margin-top: 5px;
+		color: var(--textSecondary);
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		overflow-y: hidden;
+	}
+
+	.episodeImage {
+		position: relative;
+
+		.thumbnailImg {
+			box-sizing: border-box;
+			width: 100%;
+			border-radius: 4px;
+			border: 1px solid $gray-dark;
+			display: block;
+		}
+
+		.playButton {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 35px;
+			height: 35px;
+			padding: 5px;
+			border-radius: 50%;
+			border: 1px solid $gray-dark;
+			background: var(--main);
+			color: white;
+			opacity: 0;
+			transition: opacity 100ms;
+
+			svg {
+				display: block;
+				padding-left: 2px;
+			}
+
+		}
+
+		&:hover .playButton {
+			cursor: pointer;
+			opacity: 1;
+		}
+
+	}
+
+}
+
+@media screen and (max-width: 700px) {
+	.showLayout {
+		grid-template-columns: 100%;
+		grid-gap: 0;
+	}
+	.episodeItem {
+		display: grid;
+		grid-template-columns: 150px 1fr;
+		grid-gap: 15px;
+		align-items: center;
+
+		.episodeTitle {
+			margin-top: 0;
+		}
+
+	}
+}
