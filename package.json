@@ -33,7 +33,7 @@
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
     "pino-multi-stream": "^4.0.2",
-    "pm2": "^3.5.0",
+    "pm2": "^5.2.0",
     "psl": "^1.1.31"
   },
   "devDependencies": {
